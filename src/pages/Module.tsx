@@ -49,8 +49,8 @@ export default function Module({}: Props) {
           >
             {/* Right Side Dot (First) */}
             <motion.h2
-              className={`md:text-md font-semibold text-white/70 w-52 text-sm absolute 
-    ${index % 2 === 0 ? "right-0 md:mr-52 mr-6" : "left-0 md:ml-52 ml-6"}
+              className={`md:text-md font-semibold text-white/70 w-52  text-sm absolute 
+    ${index % 2 === 0 ? "right-0 md:mr-52 mr-12" : "left-0 md:ml-52 ml-12"}
     ${index === subjectID.length - 1 ? "mb-10" : ""} 
   `}
               initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
