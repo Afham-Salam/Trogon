@@ -13,7 +13,7 @@ type SubjectType = {
 
 const Subject: React.FC = () => {
   const [subjects, setSubjects] = useState<SubjectType[]>([]);
-  const [isNavigating, setIsNavigating] = useState(false); // Track transition state
+  const [isNavigating, setIsNavigating] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Subject: React.FC = () => {
     fetchSubjects();
   }, []);
 
-  // Function to handle navigation with animation
+  
   const handleNavigate = (id: number) => {
     setIsNavigating(true); 
     setTimeout(() => {
@@ -80,13 +80,13 @@ const Subject: React.FC = () => {
                 onClick={() => handleNavigate(subject.id)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, x: -50 }} // Exit animation before navigation
+                exit={{ opacity: 0, x: -50 }} 
                 transition={{ duration: 1.8, delay: index * 0.5 }}
                 
               >
                 <motion.div
                   className="relative z-10 w-12 h-12 rounded-full bg-white flex items-center justify-center shrink-0 border-4 border-[#ac5cd4b9]"
-                  animate={isNavigating ? { opacity: 0 } : { opacity: 1 }} // Fade-out effect
+                  animate={isNavigating ? { opacity: 0 } : { opacity: 1 }} 
                   transition={{ duration: 0.5 }}
                 >
                   <span className="text-black text-xl font-bold">{subject.id}</span>
@@ -94,7 +94,7 @@ const Subject: React.FC = () => {
 
                 <motion.div
                   className="flex-1 rounded-xl p-4 pr-2 hover:bg-[#ac5cd4b9] transition-colors"
-                  animate={isNavigating ? { opacity: 0 } : { opacity: 1 }} // Fade-out on click
+                  animate={isNavigating ? { opacity: 0 } : { opacity: 1 }} 
                   transition={{ duration: 0.5 }}
                 >
                   <div className="flex items-center justify-between font-semibold">

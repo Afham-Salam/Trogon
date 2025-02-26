@@ -63,7 +63,7 @@ export default function VideoList({}: Props) {
                 </div>
               </div>
 
-              {/* Content Wrapper */}
+             
               <div className="flex justify-between items-center w-full">
                 <div>
                   <div className="text-gray-700 font-semibold text-sm">{`Step ${
@@ -74,7 +74,7 @@ export default function VideoList({}: Props) {
                   </div>
                 </div>
 
-                {/* Moved HiMiniChevronRight to the End */}
+                
                 <HiMiniChevronRight className="text-2xl text-gray-600" />
               </div>
             </div>

@@ -14,7 +14,7 @@ export default function VideoPlay({}: Props) {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      if (!id) return; // Ensure id exists before fetching
+      if (!id) return; 
 
       try {
         const response = await axios.get(
@@ -29,7 +29,7 @@ export default function VideoPlay({}: Props) {
     fetchVideo();
   }, [id]);
 
-  // Ensure we have a valid video object
+  
   const videoById = Video.length > 0 ? Video[0] : null;
 
   const getYouTubeEmbedUrl = (url: string) => {
@@ -71,10 +71,10 @@ export default function VideoPlay({}: Props) {
               url={embedUrl}
               width="100%"
               height="100%"
-              controls // Enables progress bar & play/pause controls
+              controls 
               config={{
                 youtube: {
-                  playerVars: { showinfo: 1, controls: 1 }, // Enable controls (progress bar)
+                  playerVars: { showinfo: 1, controls: 1 }, 
                 },
                 facebook: {
                   appId: "12345",
