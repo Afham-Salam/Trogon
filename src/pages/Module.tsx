@@ -35,7 +35,7 @@ export default function Module({}: Props) {
         <div className="p-4">
           <Link to={"/"}>
             <button className="p-2">
-              <BiChevronLeftCircle  className="h-6 w-6 text-white" />
+              <BiChevronLeftCircle className="h-6 w-6 text-white" />
             </button>
           </Link>
         </div>
@@ -43,13 +43,16 @@ export default function Module({}: Props) {
 
       <div className="px-4 py-2 max-w-md mx-auto relative mb-20">
         {subjectID.map((chapter, index) => (
-          <div className="relative flex flex-col gap-10 items-center text-center mb-10" key={index}>
-            
+          <div
+            className="relative flex flex-col gap-10 items-center text-center mb-10"
+            key={index}
+          >
             {/* Right Side Dot (First) */}
             <motion.h2
-              className={`md:text-md font-semibold text-white/70 w-52 text-sm  absolute  ${
-                index % 2 === 0 ? "right-0 md:mr-52" : "left-0 md:ml-52"
-              }`}
+              className={`md:text-md font-semibold text-white/70 w-52 text-sm absolute 
+    ${index % 2 === 0 ? "right-0 md:mr-52 mr-6" : "left-0 md:ml-52 ml-6"}
+    ${index === subjectID.length - 1 ? "mb-10" : ""} 
+  `}
               initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.5 }}
@@ -64,7 +67,9 @@ export default function Module({}: Props) {
                 height="120"
                 viewBox="0 0 120 120"
                 className={`absolute top-full ${
-                  index % 2 === 0 ? "md:left-6 left-0 -rotate-120" : "right-6 rotate-120"
+                  index % 2 === 0
+                    ? "md:left-6 left-0 -rotate-120"
+                    : "right-6 rotate-120"
                 }`}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -80,7 +85,6 @@ export default function Module({}: Props) {
               </motion.svg>
             )}
 
-            
             <motion.div
               className="w-20 h-20 rounded-full flex items-center justify-center relative"
               initial={{ opacity: 0, scale: 0 }}
@@ -108,7 +112,6 @@ export default function Module({}: Props) {
                 </svg>
               </div>
             </motion.div>
-
           </div>
         ))}
       </div>
