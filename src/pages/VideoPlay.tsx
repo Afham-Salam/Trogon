@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BiDownload, BiHelpCircle } from "react-icons/bi";
+import  { useEffect, useState } from "react";
+import {  BiHelpCircle } from "react-icons/bi";
 import { BsArrowLeft } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import ReactPlayer from "react-player";

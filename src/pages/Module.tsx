@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BsArrowLeft } from "react-icons/bs";
+import { useEffect, useState } from "react";
+
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BiChevronLeftCircle } from "react-icons/bi";
