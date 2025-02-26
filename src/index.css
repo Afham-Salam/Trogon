@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.bg{
+    background: rgb(2,0,36);
+background: linear-gradient(354deg, rgba(2,0,36,0) 0%, rgba(169,41,236,0.37307422969187676) 100%, rgba(204,17,200,0.9753151260504201) 100%);
+}
+.wave{
+    background-image: url("/public/wave.png");
+    opacity: 0.5;
+    background-repeat: no-repeat;
+}
