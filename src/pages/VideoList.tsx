@@ -11,7 +11,7 @@ export default function VideoList({}: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [VideoList, setVideoList] = useState<any[]>([]);
-  console.log(id);
+ 
   useEffect(() => {
     const fetchVideo = async () => {
       if (!id) return; // Ensure id exists before fetching
