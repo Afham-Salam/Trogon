@@ -6,11 +6,17 @@ import { motion } from "framer-motion";
 import { BiChevronLeftCircle } from "react-icons/bi";
 
 type Props = {};
-
+type Chapter = {
+  id: string;
+  title: string;
+  description: string;
+};
 export default function Module({}: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [subjectID, setSubjectID] = useState<any[]>([]);
+  const [subjectID, setSubjectID] = useState<Chapter[]>([]);
+  const [clickedId, setClickedId] = useState<String>("");
+  
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -28,6 +34,20 @@ export default function Module({}: Props) {
 
     fetchCourse();
   }, [id]);
+
+  const handleClick = (id: string) => {
+    console.log("clicked", id);
+    setClickedId(id);
+    
+    localStorage.setItem("previousClicked",id)
+    navigate(`/videolist/${id}`);
+  };
+  const handleNavigate = () => {
+    const prevClickedId=localStorage.getItem("previousClicked")
+    navigate(`/videolist/${prevClickedId}`);
+  };
+
+  console.log("clickedId", clickedId);
 
   return (
     <div className="min-h-screen bg-gradient-to-b bg-[#5a0e82] relative overflow-hidden mx-auto">
@@ -49,8 +69,10 @@ export default function Module({}: Props) {
           >
             {/* Right Side Dot (First) */}
             <motion.h2
-              className={`md:text-md font-semibold text-white/70 w-52  text-sm absolute 
-    ${index % 2 === 0 ? "right-0 md:mr-52 mr-12" : "left-0 md:ml-52 ml-12"}
+              onClick={() => handleClick(chapter.id)}
+              className={` cursor-pointer md:text-md font-semibold text-white  w-52  text-sm absolute   
+                        
+    ${index % 2 === 0 ? "right-0 md:mr-52 mr-12" : "left-0 md:ml-52 ml-12 "}
     ${index === subjectID.length - 1 ? "mb-10" : ""} 
   `}
               initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
@@ -118,7 +140,7 @@ export default function Module({}: Props) {
 
       <div className="fixed flex justify-center bottom-6  py-5 w-full bg-white/20 backdrop-blur-lg text-white text-lg font-medium shadow-lg shadow-purple-900/20 transition duration-300">
         <button
-          onClick={() => navigate(`/videolist/${id}`)}
+          onClick={handleNavigate}
           className="w-1/2 bg-white text-purple-700 py-4 rounded-full text-lg font-medium shadow-lg shadow-purple-900/20"
         >
           Continue

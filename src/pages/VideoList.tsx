@@ -11,6 +11,7 @@ export default function VideoList({}: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const [VideoList, setVideoList] = useState<any[]>([]);
+  const [visited, setvisited] = useState<String[]>(JSON.parse(localStorage.getItem("visitedItem")||"[]"));
  
   useEffect(() => {
     const fetchVideo = async () => {
@@ -28,6 +29,16 @@ export default function VideoList({}: Props) {
 
     fetchVideo();
   }, [id]);
+  
+  const handleClick=(videoId:string)=>{
+    const updatedVisit=[...new Set([...visited,videoId])]
+    localStorage.setItem("visitedItem",JSON.stringify(updatedVisit))
+
+    setvisited(updatedVisit)
+    navigate(`/videoplay/${id}`)
+
+
+  }
   return (
     <div className="min-h-screen  bg p-2">
       <div className="p-5 flex lg:gap-[650px] md:gap-[280px] gap-22 ">
@@ -51,7 +62,7 @@ export default function VideoList({}: Props) {
             <div
               key={item.id}
               className="flex items-start w-full mb-10 gap-4 cursor-pointer relative"
-              onClick={() => navigate(`/videoplay/${item.id}`)}
+              onClick={() => handleClick(item.id)}
             >
               <div className="relative flex flex-col items-center">
                 {index !== VideoList.length - 1 && (
@@ -69,7 +80,7 @@ export default function VideoList({}: Props) {
                   <div className="text-gray-700 font-semibold text-sm">{`Step ${
                     index + 1
                   }`}</div>
-                  <div className="font-semibold md:text-xl text-black">
+                  <div className={`font-semibold md:text-xl  ${visited.includes(item.id) ?"text-green-500":"text-black"}`}>
                     {item.title}
                   </div>
                 </div>

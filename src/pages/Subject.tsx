@@ -1,25 +1,21 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-type SubjectType = {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-};
 
-const Subject: React.FC = () => {
-  const [subjects, setSubjects] = useState<SubjectType[]>([]);
+type Props = {}
+
+export default function Subject({}: Props) {
+  const [subjects, setSubjects] = useState<any[]>([]);
   const [isNavigating, setIsNavigating] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const response = await axios.get<SubjectType[]>(
+        const response = await axios.get(
           "https://trogon.info/interview/php/api/subjects.php"
         );
         setSubjects(response.data);
@@ -113,9 +109,7 @@ const Subject: React.FC = () => {
         </div>
       </div>
 
-      <div className="wave w-full h-72"></div>
+      {/* <div className=" w-full h-72"></div> */}
     </motion.div>
   );
 };
-
-export default Subject;
